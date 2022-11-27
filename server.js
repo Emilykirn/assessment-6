@@ -8,6 +8,12 @@ app.use(express.json())
 app.use(cors())
 
 app.use(express.static(`${__dirname}/public`))
+const Rollbar = require('rollbar')
+const rollbar = new Rollbar({
+  accessToken: '3d097ae235d44d20ab30a22617707970',
+  captureUncaught: true,
+  captureUnhandledRejections: true,
+})
 
 
 app.get('/api/robots', (req, res) => {
@@ -17,6 +23,7 @@ app.get('/api/robots', (req, res) => {
         console.log('ERROR GETTING BOTS', error)
         res.sendStatus(400)
     }
+    rollbar.log('Hello world!')
 })
 
 app.get('/api/robots/five', (req, res) => {

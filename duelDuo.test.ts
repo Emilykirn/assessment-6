@@ -32,6 +32,8 @@ test('able to add to your duo', async () => {
     await driver.findElement(By.xpath('/html/body/section[1]/div/div[3]/button')).click()
     await driver.sleep(1000)
 
+  
+
     const displayBotAdded = await driver.findElement(By.xpath('/html/body/section[2]/section[1]/div/div'))
     const displayed = await displayBotAdded.isDisplayed()
 
